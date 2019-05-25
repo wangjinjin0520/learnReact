@@ -1,25 +1,23 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import 'antd/dist/antd.css';
+import './App.css'
+import Bar from './components/bar/bar'
+import MenuBar from './MenuBar'
+import TableContainer from './TableContainer'
+import ChartContainer from './components/chartContainer/chartContainer'
+import { Layout } from 'antd';
+
 
 function App() {
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <div>
+          <Bar/>
+          <div className="flex-rl">
+              <div className="flex-2"><MenuBar /></div>
+              <div className="flex-8"><ChartContainer/></div>
+          </div>
+      </div>
   );
 }
 
