@@ -1,5 +1,5 @@
 import React from 'react';
-import './bar.less'
+import './bar.css'
 import {Menu, Icon, Avatar, Row, Col, Modal} from 'antd';
 
 const SubMenu = Menu.SubMenu;
@@ -30,18 +30,14 @@ export default class Bar extends React.Component {
                 <Icon type="smile"/> JINJIN
               </Menu.Item>
             </Col>
-            <Col span={15}  />
-            <Col span={4}>
-              <Menu mode='horizontal'>
-                <SubMenu title={
-                  <div className="flex-center">
-                    <div><Avatar size="large" icon="user"/></div>
-                  </div>
-                } className="avatar-menu">
+            <Col span={17}  />
+            <Col span={2}>
+              <Menu mode='horizontal' className="flex-center">
+                <SubMenu title={<Avatar className="center-avatar" size="large" icon="user"/>} >
                   <MenuItemGroup>
-                    <Menu.Item key="2-1" onClick={() => {
-                      this.setState({infoVisible: true})
-                    }}>个人信息</Menu.Item>
+                    <Menu.Item key="2-1" onClick={() => {this.setState({infoVisible: true})}}>
+                      个人信息
+                    </Menu.Item>
                     <Menu.Item key="2-2">修改密码</Menu.Item>
                     <Menu.Item key="2-3">退出系统</Menu.Item>
                   </MenuItemGroup>

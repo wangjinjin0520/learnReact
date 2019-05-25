@@ -8,14 +8,18 @@ export default class MenuBar extends React.Component {
         collapsed: false,
     };
 
+    handleMenuSelected=(e)=> {
+        this.props.changeTabIndex&&this.props.changeTabIndex(e.key)
+    };
+
     render() {
         return (
                 <Menu
                     defaultSelectedKeys={['1']}
-                    defaultOpenKeys={['sub1']}
                     mode="inline"
                     theme="light"
-                    inlineCollapsed={this.state.collapsed}
+                    inlineCollapsed={false}
+                    onSelect={this.handleMenuSelected}
                 >
                     <Menu.Item key="1">
                         <Icon type="desktop" />
