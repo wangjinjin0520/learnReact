@@ -1,34 +1,23 @@
 import React from 'react';
 import {Tabs} from 'antd';
-// 引入 ECharts 主模块
-import echarts from 'echarts/lib/echarts';
-// 引入柱状图
-import 'echarts/lib/chart/bar';
-import 'echarts/lib/chart/line';
-import 'echarts/lib/chart/pie';
-
-// 引入提示框和标题组件
-import 'echarts/lib/component/tooltip';
-import 'echarts/lib/component/title';
-
+import ReactEcharts from 'echarts-for-react';
 import './chartContainer.css'
 
 const TabPane = Tabs.TabPane;
 
 export default class ChartContainer extends React.Component {
   state = {
-    defaultActiveKey: '1',
-  }
+    activeKey: '1',
+  };
 
-  callback(key) {
-    console.log(key);
-  }
+  changeChart = (e) => {
+    this.setState({
+      activeKey: e
+    })
+  };
 
-  componentDidMount() {
-    // 基于准备好的dom，初始化echarts实例x`
-    let myChart1 = echarts.init(document.getElementById('chart1'));
-    // 绘制图表
-    myChart1.setOption({
+  render() {
+    let op1 = {
       title: {text: 'ECharts 入门示例'},
       tooltip: {},
       xAxis: {
@@ -40,10 +29,8 @@ export default class ChartContainer extends React.Component {
         type: 'bar',
         data: [5, 20, 36, 10, 10, 20]
       }]
-    });
-    let myChart2 = echarts.init(document.getElementById('chart2'));
-    // 绘制图表
-    myChart2.setOption({
+    };
+    let op2 = {
       title: {text: 'ECharts 入门示例'},
       xAxis: {
         type: 'category',
@@ -57,10 +44,8 @@ export default class ChartContainer extends React.Component {
         type: 'line'
       }]
 
-    });
-    let myChart3 = echarts.init(document.getElementById('chart3'));
-    // 绘制图表
-    myChart3.setOption({
+    };
+    let op3 = {
       title: {
         text: '某站点用户访问来源',
         subtext: '纯属虚构',
@@ -97,26 +82,18 @@ export default class ChartContainer extends React.Component {
           }
         }
       ]
-    })
-  }
-
-  render() {
+    };
     return (
       <div>
-        <Tabs defaultActiveKey="1" onChange={this.callback}>
+        <Tabs defaultActiveKey="1" onChange={this.changeChart}>
           <TabPane tab="bar" key="1" forceRender/>
           <TabPane tab="line" key="2" forceRender/>
           <TabPane tab="pie" key="3" forceRender/>
         </Tabs>
         <div className="chart-wrapper" style={{width: 400, height: 400}}>
-          {/*if 1 show bar chart*/}
-          {/*if 2 show line chart*/}
-          {/*if 3 show pie chart*/}
-          <div id="chart1"></div>
+          <ReactEcharts option={eval(`op${this.state.activeKey}`)}/>
         </div>
       </div>
-
-
     )
   }
 }

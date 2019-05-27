@@ -15,10 +15,11 @@
 }
 
 .flex-left {
-  flex-grow: 2;
+  width: 10%;
+  min-width: 200px;
 }
 
 .flex-right {
-  flex-grow: 8;
+  width: 90%;
 }
 
