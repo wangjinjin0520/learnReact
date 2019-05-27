@@ -6,6 +6,7 @@
     "antd": "^3.18.2",
     "cnpm": "^6.0.0",
     "echarts": "^4.2.1",
+    "echarts-for-react": "^2.0.15-beta.0",
     "less": "^3.9.0",
     "less-loader": "^5.0.0",
     "react": "^16.8.6",

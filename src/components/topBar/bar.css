@@ -1,0 +1,59 @@
+.top-bar-component {
+    height: 56px;
+    width: 100%;
+    position: relative;
+    border-bottom: 1px lightgray solid;
+}
+
+.icon-box,
+.logo-box {
+    position: absolute;
+    height: 56px;
+    display: flex;
+    align-items: center;
+
+}
+
+.icon-box {
+    right: 24px;
+}
+
+.logo-box {
+    left: 24px;
+}
+
+
+/*.avatar-menu {*/
+/*    width: 100%;*/
+/*}*/
+
+/*.flex-center {*/
+/*    display: flex;*/
+/*    justify-content: space-around;*/
+/*    border: none;*/
+/*}*/
+
+/*.center-avatar {*/
+/*    text-align: center;*/
+/*}*/
+
+/*.flex-center > li {*/
+/*    width: 100%;*/
+/*}*/
+
+/*.ant-menu-item, .ant-menu-submenu-title {*/
+/*    text-align: center;*/
+/*}*/
+
+
+/*!*清除css之间的互相影响*!*/
+/*.ant-menu-item .anticon, .ant-menu-submenu-title .anticon {*/
+/*    margin-right: 1px;*/
+/*}*/
+
+/*.ant-avatar-lg {*/
+/*    width: 40px;*/
+/*    height: 40px;*/
+/*    line-height: 35px;*/
+/*    border-radius: 50%;*/
+/*}*/

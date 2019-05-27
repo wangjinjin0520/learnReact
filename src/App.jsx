@@ -1,45 +1,41 @@
 import React from 'react';
 import 'antd/dist/antd.css';
 import './App.css'
-import Bar from './components/bar/bar'
-import MenuBar from './MenuBar'
-import TableContainer from './TableContainer'
+import TopBar from './components/topBar/bar'
+import MenuBar from './components/menuBar/MenuBar'
+import TableContainer from './components/tableContainer/TableContainer'
 import ChartContainer from './components/chartContainer/chartContainer'
-import { Layout } from 'antd';
 
+class App extends React.Component {
 
-class App extends React.Component{
+  state = {
+    tabIndex: "1"
+  };
 
-    state={
-        tabIndex: "1"
-    };
+  changeTabIndex = (index) => {
+    this.setState({
+      tabIndex: index
+    })
+  };
 
-    changeTabIndex=(index)=> {
-        this.setState({
-            tabIndex:index
-        })
-    };
-
-    render() {
-            let container=<TableContainer/>;
-            if(this.state.tabIndex==='1'){
-                container = <TableContainer/>;
-            }else {
-                container = <ChartContainer/>;
+  render() {
+    return (
+      <div className="demo-app">
+        <TopBar/>
+        <div className="flex-container">
+          <div className="flex-left">
+            <MenuBar changeTabIndex={this.changeTabIndex}/>
+          </div>
+          <div className="flex-right">
+            {this.state.tabIndex === '1'
+              ? (<TableContainer/>)
+              : (<ChartContainer/>)
             }
-
-        return (
-            <div>
-                <Bar/>
-                <div className="flex-rl">
-                    <div className="flex-2"><MenuBar changeTabIndex={this.changeTabIndex}/></div>
-                    <div className="flex-8">
-                        {container}
-                    </div>
-                </div>
-            </div>
-        );
-    }
+        </div>
+      </div>
+      </div>
+    );
+  }
 }
 
 export default App;

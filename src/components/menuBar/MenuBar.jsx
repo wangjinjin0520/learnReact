@@ -1,7 +1,6 @@
 import React from 'react';
-import { Menu, Icon, Button } from 'antd';
+import { Menu, Icon } from 'antd/lib/index';
 
-const SubMenu = Menu.SubMenu;
 
 export default class MenuBar extends React.Component {
     state = {
@@ -9,7 +8,7 @@ export default class MenuBar extends React.Component {
     };
 
     handleMenuSelected=(e)=> {
-        this.props.changeTabIndex&&this.props.changeTabIndex(e.key)
+        this.props.changeTabIndex && this.props.changeTabIndex(e.key)
     };
 
     render() {
