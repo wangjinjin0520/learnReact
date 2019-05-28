@@ -1,7 +1,7 @@
 import React from 'react';
 import 'antd/dist/antd.css';
 import './App.css'
-import TopBar from './components/topBar/bar'
+import TopBar from './components/topBar/TopBar'
 import MenuBar from './components/menuBar/MenuBar'
 import TableContainer from './components/tableContainer/TableContainer'
 import ChartContainer from './components/chartContainer/chartContainer'

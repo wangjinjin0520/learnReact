@@ -1,22 +1,26 @@
 import React from 'react';
 import './bar.css'
-import {Menu, Icon, Avatar,  Modal, Input, Form, Button} from 'antd';
+import {Menu, Icon, Avatar} from 'antd';
+import PwdModify from '../pwdModify/PwdModify';
 // import FormItem from "antd/es/form/FormItem";
 
 const SubMenu = Menu.SubMenu;
 // const {FormItem} = Form;
 const MenuItemGroup = Menu.ItemGroup;
 
-class TopBar extends React.Component {
+export default class TopBar extends React.Component {
   state = {
     infoVisible: false,
-    pwsVisible: false,
-    oldPwd:'',
-    newPwd:'',
-    confirmPwd:'',
+  };
+  closePwd=()=>{
+    this.state.infoVisible = false; // set state
   };
 
-
+  changeVisible=(visible)=>{
+    this.setState({
+      infoVisible:visible
+    })
+  }
   render() {
     return (
       <div className="top-bar-component">
@@ -40,7 +44,7 @@ class TopBar extends React.Component {
             </SubMenu>
           </Menu>
         </div>
-
+        <PwdModify infoVisible={this.state.infoVisible} changeVisible={this.changeVisible} closePwd={this.closePwd}/>
 
       </div>
     )
@@ -48,5 +52,4 @@ class TopBar extends React.Component {
 
 }
 
-const WrappedNormalLoginForm = Form.create({name: 'normal_login'})(TopBar);
-export default WrappedNormalLoginForm;
+
