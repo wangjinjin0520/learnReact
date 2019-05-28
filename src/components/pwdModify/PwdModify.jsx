@@ -11,7 +11,6 @@ class PwdModify extends React.Component {
 
   handleConfirmPassword=(rule, value, callback)=>{
     const {getFieldValue} = this.props.form;
-    console.log(value,getFieldValue('newPwd'));
     if (value && value !== getFieldValue('newPwd')) {
       callback('两次输入不一致！')
     }

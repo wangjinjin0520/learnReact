@@ -16,7 +16,7 @@ export default class ChartContainer extends React.Component {
     })
   };
 
-  render() {
+  getOptions(index) {
     let op1 = {
       title: {text: 'ECharts 入门示例'},
       tooltip: {},
@@ -83,6 +83,17 @@ export default class ChartContainer extends React.Component {
         }
       ]
     };
+    if (index === 1) {
+      return op1;
+    }else if (index === 2) {
+      return op2;
+    }else {
+      return op3;
+    }
+  }
+
+  render() {
+
     return (
       <div>
         <Tabs defaultActiveKey="1" onChange={this.changeChart}>
@@ -91,7 +102,7 @@ export default class ChartContainer extends React.Component {
           <TabPane tab="pie" key="3" forceRender/>
         </Tabs>
         <div className="chart-wrapper" style={{width: 400, height: 400}}>
-          <ReactEcharts option={eval(`op${this.state.activeKey}`)}/>
+          <ReactEcharts notMerge={true} option={this.getOptions(parseInt(this.state.activeKey))}/>
         </div>
       </div>
     )
