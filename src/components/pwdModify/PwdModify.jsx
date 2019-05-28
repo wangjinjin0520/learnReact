@@ -9,10 +9,14 @@ class PwdModify extends React.Component {
     confirmPwd: '',
   };
 
-  isRepassEqPass=(rule, value, callback)=>{
-    console.log(rule, value, callback);
+  handleConfirmPassword=(rule, value, callback)=>{
+    const {getFieldValue} = this.props.form;
+    console.log(value,getFieldValue('newPwd'));
+    if (value && value !== getFieldValue('newPwd')) {
+      callback('两次输入不一致！')
+    }
     callback()
-  }
+  };
 
   handleSubmit = () => {
     const {form: {getFieldValue, validateFields}} = this.props;
@@ -26,6 +30,11 @@ class PwdModify extends React.Component {
         }
       }
     })
+  };
+
+  handlePwdChange = (rule, value, callback) => {
+    this.props.form.validateFields(['confirmPwd'], {force: true});
+    callback();
   };
 
   handleCloseModal = () => {
@@ -56,7 +65,7 @@ class PwdModify extends React.Component {
             </Form.Item>
             <Form.Item label="新密码">
               {this.state.newPwd = getFieldDecorator('newPwd', {
-                rules: [{required: true, message: 'Please input your Password!', min: 8, validator:this.isRepassEqPass}],
+                rules: [{required: true, message: '密码至少保证 8 位', min: 8},{validator:this.handlePwdChange}],
               })(
                 <Input
                   prefix={<Icon type="lock"/>}
@@ -66,9 +75,7 @@ class PwdModify extends React.Component {
               )}
             </Form.Item>
             <Form.Item label="确认密码">
-              {this.state.confirmPwd = getFieldDecorator('confirmPwd', {
-                rules: [{required: true, message: 'Please input your Password!', min: 8}],
-              })(
+              {this.state.confirmPwd = getFieldDecorator('confirmPwd', {rules: [{validator:this.handleConfirmPassword}]})(
                 <Input
                   prefix={<Icon type="lock"/>}
                   type="password"
